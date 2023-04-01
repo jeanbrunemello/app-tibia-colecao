@@ -1,0 +1,11 @@
+<mat-card class="item-card">
+    <mat-card-header>
+        <mat-card-title>{{itemCard.itemName}}</mat-card-title>
+        <mat-card-subtitle>{{itemCard.category}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{itemCard.sprite}}" alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+        <label for="owns"><input type="checkbox" name="owns" id="owns" [checked]="itemCard.owns"> Owns </label>
+
+    </mat-card-actions>
+</mat-card>

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
     HeaderComponent,
     FooterComponent,
     FormularioComponent,
-    HomeComponent
+    HomeComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -7,4 +7,107 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+listaDeCards = [
+ {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  },
+  {
+    id: 1,
+    itemName: "Carlin Sword home",
+    category: "Swords",
+    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
+    owns: false
+  }
+]
+
+
+
 }
