@@ -6,6 +6,8 @@
     <img mat-card-image src={{itemCard.imagem}} alt="sprite of {{itemCard.nome}}">
     <mat-card-actions>
         <label for="owns"><input type="checkbox" name="owns" [id]="itemCard.possui" [checked]="itemCard.possui"> Owns </label>
-
+                <button routerLink="/deleteItem/{{itemCard.id}}" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
     </mat-card-actions>
 </mat-card>

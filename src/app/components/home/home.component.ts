@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit {
 
   getAllItems() {
     this.service.getAllItems().subscribe((itemList) => {
-      this.listCards = itemList
-      console.log(this.listCards);
+      this.listCards = itemList;
     })
   }
 }

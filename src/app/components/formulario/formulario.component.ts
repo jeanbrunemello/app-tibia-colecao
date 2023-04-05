@@ -13,7 +13,7 @@ export class FormularioComponent {
   itemClasses: string[] = ["Armors", "Amulets", "Bags and Backpacks", "Boots", "Decoration", "Helmets and Hats", "Legs", "Quivers", "Rings", "Shields", "Spellbooks", "Axes", "Clubs", "Distance", "Swords", "Wands and Rods"];
 
   item: Item = {
-    id: 1,
+    id: 0,
     nome: "",
     categoria: "",
     imagem: "https://static.tibia.com/images/library/cultacolyte.gif",

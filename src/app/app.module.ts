@@ -13,6 +13,10 @@ import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatChipsModule } from '@angular/material/chips';
+import { DeleteItemComponent } from './components/delete-item/delete-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -22,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     FormularioComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
+    DeleteItemComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

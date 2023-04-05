@@ -1,7 +1,7 @@
 export interface Item {
-    id?: number
-    nome: string
-    categoria: string
-    imagem: string
+    id: number,
+    nome: string,
+    categoria: string,
+    imagem: string,
     possui: false
 }
