@@ -16,8 +16,18 @@ export class ItemService {
   getAllItems(): Observable<Item[]>{
     return this.http.get<Item[]>(this.apiUrl)
   }
-  
+
+  getById(id: number):Observable<Item>{
+    const urlToGet = `${this.apiUrl}/${id}`
+    return this.http.get<Item>(urlToGet)
+  } 
+
   addItem(itemCadastrar: Item): Observable<Item>{
     return this.http.post<Item>(this.apiUrl, itemCadastrar)
+  }
+
+  deleteItem(id: number): Observable<Item>{
+    const urlToDelete = `${this.apiUrl}/${id}`
+    return this.http.delete<Item>(urlToDelete)
   }
 }
