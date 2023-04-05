@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Item } from '../itemInterface';
 
 @Component({
   selector: 'app-formulario',
@@ -9,12 +10,12 @@ export class FormularioComponent {
   itemClass: string = "";
   itemClasses: string[] = ["Armors", "Amulets", "Bags and Backpacks", "Boots", "Decoration", "Helmets and Hats", "Legs", "Quivers", "Rings", "Shields", "Spellbooks", "Axes", "Clubs", "Distance", "Swords", "Wands and Rods"];
 
-  item = {
+  item: Item = {
     id: 1,
-    itemName: "",
-    category: "",
-    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
-    owns: false
+    nome: "",
+    categoria: "",
+    imagem: "https://static.tibia.com/images/library/cultacolyte.gif",
+    possui: false
   }
 
   // MarkAsOwned(event: any){
@@ -25,7 +26,7 @@ export class FormularioComponent {
 
   AddItemToDatabase(){
 console.log("enviado")
-    console.log(this.item.itemName, this.item.category, this.item.sprite, this.item.owns)
+    console.log(this.item.nome, this.item.categoria, this.item.imagem, this.item.possui)
   }
 
   CancelAndClose(){
@@ -34,6 +35,6 @@ console.log("enviado")
 
   teste(event:any){
     console.log(event.value)
-    this.item.category = event.value
+    this.item.categoria = event.value
   }
 }

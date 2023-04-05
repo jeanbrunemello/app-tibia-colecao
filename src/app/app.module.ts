@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from './components/card/card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CardComponent } from './components/card/card.component';
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

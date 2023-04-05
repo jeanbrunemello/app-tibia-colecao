@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Item } from '../itemInterface';
 
 @Component({
   selector: 'app-card',
@@ -7,13 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
-  @Input()
-  itemCard = {
-    id: 1,
-    itemName: "Carlin Sword",
-    category: "Swords",
-    sprite: "https://static.tibia.com/images/library/cultacolyte.gif",
-    owns: false
+  @Input() itemCard: Item = {
+    id: 0,
+    nome: 'item name',
+    categoria: 'item category',
+    imagem: 'sprite url',
+    possui: false
   }
-
 }
