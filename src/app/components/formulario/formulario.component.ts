@@ -1,3 +1,5 @@
+import { ItemService } from 'src/app/services/item.service';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Item } from '../itemInterface';
 
@@ -18,22 +20,27 @@ export class FormularioComponent {
     possui: false
   }
 
+  constructor(private service: ItemService) { }
+
   // MarkAsOwned(event: any){
   //   console.log(event.target.checked)
   //   this.item.possui = event.target.checked
   //   console.log(this.item.possui)
   // }
 
-  AddItemToDatabase(){
-console.log("enviado")
-    console.log(this.item.nome, this.item.categoria, this.item.imagem, this.item.possui)
+  AddItemToDatabase() {
+    this.service.addItem(this.item).subscribe(() => {
+      console.log("enviado")
+      console.log(`O item ${this.item.nome} foi cadastrado com sucesso`)
+    })
+
   }
 
-  CancelAndClose(){
+  CancelAndClose() {
 
   }
 
-  teste(event:any){
+  teste(event: any) {
     console.log(event.value)
     this.item.categoria = event.value
   }
