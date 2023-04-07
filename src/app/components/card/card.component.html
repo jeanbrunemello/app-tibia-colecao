@@ -5,9 +5,17 @@
     </mat-card-header>
     <img mat-card-image src={{itemCard.imagem}} alt="sprite of {{itemCard.nome}}">
     <mat-card-actions>
-        <label for="owns"><input type="checkbox" name="owns" [id]="itemCard.possui" [checked]="itemCard.possui"> Owns </label>
-                <button routerLink="/deleteItem/{{itemCard.id}}" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
-                    <mat-icon>delete</mat-icon>
-                </button>
+        <label for="owns"><input type="checkbox" name="owns" [id]="itemCard.possui" [checked]="itemCard.possui"> Owns
+        </label>
+        <div>
+            <button routerLink="/editItem/{{itemCard.id}}" mat-icon-button color="primary"
+                aria-label="Example icon button with an edit icon">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button routerLink="/deleteItem/{{itemCard.id}}" mat-icon-button color="warn"
+                aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
     </mat-card-actions>
 </mat-card>

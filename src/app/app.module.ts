@@ -17,6 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { EditFormComponent } from './components/formulario/editar/edit-form/edit-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     FormularioComponent,
     HomeComponent,
     CardComponent,
-    DeleteItemComponent
+    DeleteItemComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

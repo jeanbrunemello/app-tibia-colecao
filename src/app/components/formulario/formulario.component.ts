@@ -40,7 +40,7 @@ export class FormularioComponent {
 
   }
 
-  teste(event: any) {
+  ChangeItemClass(event: any) {
     console.log(event.value)
     this.item.categoria = event.value
   }

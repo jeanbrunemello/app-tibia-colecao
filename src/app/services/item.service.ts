@@ -1,6 +1,6 @@
+import { Item } from './../components/itemInterface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Item } from '../components/itemInterface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,6 +24,11 @@ export class ItemService {
 
   addItem(itemCadastrar: Item): Observable<Item>{
     return this.http.post<Item>(this.apiUrl, itemCadastrar)
+  }
+
+  UpdateItem(itemParaAtualizar: Item): Observable<Item>{
+    const urlToEdit = `${this.apiUrl}/${itemParaAtualizar.id}`
+    return this.http.put<Item>(urlToEdit, itemParaAtualizar)
   }
 
   deleteItem(id: number): Observable<Item>{
