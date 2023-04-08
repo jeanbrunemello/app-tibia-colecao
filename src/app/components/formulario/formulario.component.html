@@ -2,35 +2,35 @@
 
     <section class="add-item-header">
         <header>
-            <h2>Cadastrar item no banco de dados</h2>
+            <h2>Add new item to database</h2>
         </header>
     </section>
     <Section class="add-item-form">
         <form>
             <div class="flex">
-
-                <div class="item-name">
-                    <label for="item-name">Item Name:</label><br>
-                    <input type="text" name="item-name" id="item-name" placeholder="Ex. Leather Armor"
-                        [(ngModel)]="item.nome">
-                </div>
-
-                <div class="item-sprite-upload">
-                    <label for="item-sprite">Upload Sprite:</label><br>
-                    <input type="text" name="item-sprite" id="item-sprite" placeholder="URL do tibia.fandom"
+                <div class="add-item-form-text">
+                    <mat-form-field class="item-name">
+                        <mat-label for="item-name">Item Name:</mat-label>
+                        <input matInput type="text" name="item-name" id="item-name" placeholder="Ex. Leather Armor"
+                            [(ngModel)]="item.nome">
+                    </mat-form-field>
+                    <mat-form-field class="add-item-form-sprite">
+                        <span matPrefix><img [src]="item.imagem" alt=""></span>
+                        <mat-label for="item-sprite">Upload Sprite:</mat-label>
+                        <input matInput type="text" name="item-sprite" id="item-sprite" placeholder="Ex. https://static.tibia.com/images/library/cultacolyte.gif"
                         [(ngModel)]="item.imagem">
-                </div>
-                <div class="item-spite">
-                    <img [src]="item.imagem" alt=""><br>
+                        <div class="item-sprite-upload">
+                        </div>
+                    </mat-form-field>
                 </div>
 
-                <div class="item-class">
-                    <p>Select item category:</p>
-                    <div class="flex">
+                <div class="item-classes">
+                    <p>Select an item category:</p>
+                    <div class="item-classes-flex">
                         <div class="radio-buttons" *ngFor="let class of itemClasses">
                             <label for="{{class}}">
                                 <input type="radio" id="{{class}}" name="item-class" value="{{class}}"
-                                    (change)="ChangeItemClass($event.target)">
+                                    (change)="SetItemClass($event.target)">
                                 {{class}}
                             </label>
                         </div>
@@ -38,9 +38,10 @@
                 </div>
             </div>
 
+
             <div class="item-buttons">
                 <button mat-raised-button color="primary" (click)="AddItemToDatabase()">Submit</button>
-                <button mat-raised-button color="warn" routerLink="" (click)="CancelAndClose()">Close</button>
+                <button mat-raised-button color="warn" (click)="CancelAndClose()">Back to home</button>
             </div>
 
         </form>

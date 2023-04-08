@@ -2,6 +2,7 @@ import { ItemService } from 'src/app/services/item.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Item } from '../itemInterface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -16,11 +17,11 @@ export class FormularioComponent {
     id: 0,
     nome: "",
     categoria: "",
-    imagem: "https://static.tibia.com/images/library/cultacolyte.gif",
+    imagem: "",
     possui: false
   }
 
-  constructor(private service: ItemService) { }
+  constructor(private service: ItemService, private router: Router) { }
 
   // MarkAsOwned(event: any){
   //   console.log(event.target.checked)
@@ -33,14 +34,13 @@ export class FormularioComponent {
       console.log("enviado")
       console.log(`O item ${this.item.nome} foi cadastrado com sucesso`)
     })
-
   }
 
   CancelAndClose() {
-
+    this.router.navigate(["/home"])
   }
 
-  ChangeItemClass(event: any) {
+  SetItemClass(event: any) {
     console.log(event.value)
     this.item.categoria = event.value
   }

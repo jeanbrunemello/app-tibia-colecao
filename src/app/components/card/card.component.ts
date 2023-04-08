@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Item } from '../itemInterface';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteItemComponent } from '../delete-item/delete-item.component';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-card',
@@ -11,7 +12,6 @@ import { DeleteItemComponent } from '../delete-item/delete-item.component';
 })
 export class CardComponent {
 
-  
   @Input() itemCard: Item = {
     id: 0,
     nome: 'item name',
@@ -19,8 +19,10 @@ export class CardComponent {
     imagem: 'sprite url',
     possui: false
   }
-  
-  constructor(public dialog: MatDialog, public activatedRoute: ActivatedRoute){}
+
+  owns: string = ""
+
+  constructor(public dialog: MatDialog, public activatedRoute: ActivatedRoute) { }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(DeleteItemComponent, {
@@ -30,8 +32,23 @@ export class CardComponent {
     });
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.UpdateOwnsText()
+  }
 
+  UpdateOwnsText() {
+    if (this.itemCard.possui === true) {
+      this.owns = "Collected"
+    }
+    else {
+      this.owns = "Not owned";
+    }
+  }
+
+  ChangeOwns() {
+    this.itemCard.possui = !this.itemCard.possui
+    this.UpdateOwnsText()
   }
 }
+
 

@@ -18,6 +18,9 @@ import { DeleteItemComponent } from './components/delete-item/delete-item.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { EditFormComponent } from './components/formulario/editar/edit-form/edit-form.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -41,7 +44,11 @@ import { EditFormComponent } from './components/formulario/editar/edit-form/edit
     HttpClientModule,
     MatChipsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatRadioModule
+    
     
   ],
   providers: [],

@@ -1,19 +1,45 @@
 .item-card {
     margin: 10px;
+    width: 250px;
+    height: 200px;
 }
 
-mat-card-header{
+mat-card-header {
     margin: 0 auto;
     text-align: center;
 }
 
-.item-card img{
+.item-card img {
     width: 64px;
     margin: 0 auto;
 }
 
-mat-card-actions{
+
+mat-card-actions {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
+.item-card-chips {
+    width: 100%;
+    text-align: center;
+}
+
+.item-card-icons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-expansion-panel {
+    width: 250px;
+    margin: -9px 0 10px 10px;
+}
+
+mat-expansion-panel-header {
+    height: 15px;
+    text-align: center;
+    font-size: small;
+    background-color: rgb(245, 245, 245);
+}

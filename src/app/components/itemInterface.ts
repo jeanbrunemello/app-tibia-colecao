@@ -3,5 +3,5 @@ export interface Item {
     nome: string,
     categoria: string,
     imagem: string,
-    possui: false
+    possui: Boolean
 }
