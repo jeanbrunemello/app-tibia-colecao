@@ -14,6 +14,7 @@ export class ItemService {
   //apiGetAllPagination = `?skip=${}&take=${}`
 
   getAllItems(): Observable<Item[]>{
+    //return this.http.get<Item[]>(this.apiUrl+apiGetAllPagination)
     return this.http.get<Item[]>(this.apiUrl)
   }
 

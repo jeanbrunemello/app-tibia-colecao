@@ -1,16 +1,15 @@
 <section class="home-header">
     <header>
-        <h2>Coleção de itens do personagem "usuario"</h2>
+        <h2>Tibia's item collection manager</h2>
     </header>
+    <div class="home-header-button">
+        <button mat-raised-button color="primary" routerLink="/createItem">Add new item</button>
+    </div>
 </section>
-<section class="home-admin-actions" >
-    <button mat-raised-button routerLink="/createItem">Cadastrar item</button>
-</section>
+
 
 <section class="home-items">
     <div *ngFor="let card of listCards">
         <app-card [itemCard]="card"></app-card>
     </div>
 </section>
-
-
