@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/components/itemInterface';
 import { ItemService } from 'src/app/services/item.service';
@@ -12,33 +13,42 @@ export class EditFormComponent {
 
   itemClass: string = "Boots";
   itemClasses: string[] = ["Armors", "Amulets", "Bags and Backpacks", "Boots", "Decoration", "Helmets and Hats", "Legs", "Quivers", "Rings", "Shields", "Spellbooks", "Axes", "Clubs", "Distance", "Swords", "Wands and Rods"];
-
-  item: Item = {
-    id: 0,
-    nome: "",
-    categoria: "",
-    imagem: "https://static.tibia.com/images/library/cultacolyte.gif",
-    possui: false
-  }
+  form!:FormGroup;
 
 
-  constructor(private service: ItemService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  // item: Item = {
+  //   id: 0,
+  //   nome: "",
+  //   categoria: "",
+  //   imagem: "https://static.tibia.com/images/library/cultacolyte.gif",
+  //   possui: false
+  // }
+
+
+  constructor(private service: ItemService, private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      id: 0,
+      nome: ["", Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(35)])],
+      categoria: ["", [Validators.required]],
+      imagem: ["", Validators.compose([Validators.required, Validators.minLength(9)])],
+      possui: [false],
+      horaConsulta: new Date()
+    })
     this.getItemFromDatabase();
-
   }
 
-  getItemFromDatabase() {
+  getItemFromDatabase():any {
     const activatedRouteId = this.activatedRoute.snapshot.paramMap.get("id")
     this.service.getById(parseInt(activatedRouteId!)).subscribe((itemBancoDeDados) => {
-      this.item = itemBancoDeDados
+      this.form.setValue( itemBancoDeDados )
     })
   }
 
   EditItem() {
-this.service.UpdateItem(this.item).subscribe( () => {
+this.service.UpdateItem(this.form.value).subscribe( () => {
   this.router.navigate(["/home"])
 })
   }
@@ -47,8 +57,4 @@ this.service.UpdateItem(this.item).subscribe( () => {
     this.router.navigate(["/home"])
   }
 
-  ChangeItemClass(event: any) {
-    console.log(event.value)
-    this.item.categoria = event.value
-  }
 }

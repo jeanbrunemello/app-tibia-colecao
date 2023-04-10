@@ -6,41 +6,85 @@
         </header>
     </section>
     <Section class="add-item-form">
-        <form>
+        <form [formGroup]="form">
             <div class="flex">
-                <div class="add-item-form-text">
+                <div class="add-item-form-text form-name-input">
                     <mat-form-field class="item-name">
                         <mat-label for="item-name">Item Name:</mat-label>
-                        <input matInput type="text" name="item-name" id="item-name" placeholder="Ex. Leather Armor"
-                            [(ngModel)]="item.nome">
+                        <input matInput type="text" formControlName="nome" id="item-name"
+                            placeholder="Ex. Leather Armor" maxlength="35">
                     </mat-form-field>
+                    <div class="text-danger"
+                        *ngIf="form.get('nome')?.errors?.['required'] && form.get('nome')?.touched ">
+                        <small>
+                            This field is required.
+                        </small>
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="form.get('nome')?.errors?.['minlength'] && form.get('nome')?.touched ">
+                        <small>
+                            The minimum length for this field is
+                            {{form.get('nome')?.errors?.['minlength'].requiredLength}}
+                            characters.
+                        </small>
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="form.get('nome')?.errors?.['maxlength'] && form.get('nome')?.touched ">
+                        <small>
+                            The maximum length for this field is
+                            {{form.get('nome')?.errors?.['maxlength'].requiredLength}}
+                            characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="add-item-form-text">
                     <mat-form-field class="add-item-form-sprite">
-                        <span matPrefix><img [src]="item.imagem" alt=""></span>
+                        <span matPrefix><img src="{{form.get('imagem')?.value}}" alt=""></span>
                         <mat-label for="item-sprite">Upload Sprite:</mat-label>
-                        <input matInput type="text" name="item-sprite" id="item-sprite" placeholder="Ex. https://static.tibia.com/images/library/cultacolyte.gif"
-                        [(ngModel)]="item.imagem">
+                        <input matInput type="text" formControlName="imagem" id="item-sprite"
+                            placeholder="Ex. https://static.tibia.com/images/library/cultacolyte.gif">
                         <div class="item-sprite-upload">
                         </div>
                     </mat-form-field>
-                </div>
 
+                    <div class="text-danger"
+                        *ngIf="form.get('imagem')?.errors?.['required'] && form.get('imagem')?.touched ">
+                        <small>
+                            This field is required.
+                        </small>
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="form.get('imagem')?.errors?.['minlength'] && form.get('imagem')?.touched ">
+                        <small>
+                            The minimum length for this field is
+                            {{form.get('imagem')?.errors?.['minlength'].requiredLength}} characters.
+                        </small>
+                    </div>
+
+                </div>
                 <div class="item-classes">
                     <p>Select an item category:</p>
                     <div class="item-classes-flex">
                         <div class="radio-buttons" *ngFor="let class of itemClasses">
                             <label for="{{class}}">
-                                <input type="radio" id="{{class}}" name="item-class" value="{{class}}"
-                                    (change)="SetItemClass($event.target)">
+                                <input type="radio" id="{{class}}" formControlName="categoria" value="{{class}}">
                                 {{class}}
                             </label>
                         </div>
                     </div>
                 </div>
+                <div class="text-danger"
+                    *ngIf="form.get('categoria')?.errors?.['required'] && form.get('categoria')?.touched ">
+                    <small>
+                        This field is required.
+                    </small>
+                </div>
             </div>
 
-
             <div class="item-buttons">
-                <button mat-raised-button color="primary" (click)="AddItemToDatabase()">Submit</button>
+                <button mat-raised-button color="primary" [disabled]="!form.valid"
+                    (click)="AddItemToDatabase()">Submit</button>
                 <button mat-raised-button color="warn" (click)="CancelAndClose()">Back to home</button>
             </div>
 
