@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
@@ -47,7 +47,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     MatExpansionModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    ReactiveFormsModule
     
     
   ],
