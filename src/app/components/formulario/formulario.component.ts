@@ -47,6 +47,7 @@ export class FormularioComponent {
     this.service.addItem(this.form.value).subscribe(() => {
       console.log("enviado")
       console.log(`O item ${this.form.get("nome")} foi cadastrado com sucesso`)
+      this.form.reset()
     })
   }
 

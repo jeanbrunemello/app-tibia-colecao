@@ -49,6 +49,7 @@ export class EditFormComponent {
 
   EditItem() {
 this.service.UpdateItem(this.form.value).subscribe( () => {
+  this.form.reset()
   this.router.navigate(["/home"])
 })
   }

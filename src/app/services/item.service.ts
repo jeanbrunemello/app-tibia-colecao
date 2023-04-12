@@ -1,5 +1,5 @@
 import { Item } from './../components/itemInterface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,11 +12,21 @@ export class ItemService {
 
   apiUrl = "https://localhost:7122/ItemApi";
   //apiGetAllPagination = `?skip=${}&take=${}`
+  
+  
+  getAllItems(skip: number, take: number): Observable<Item[]>{
+    let urlParams= new HttpParams().set("skip", skip).set("take", take);
 
-  getAllItems(): Observable<Item[]>{
-    //return this.http.get<Item[]>(this.apiUrl+apiGetAllPagination)
-    return this.http.get<Item[]>(this.apiUrl)
+    return this.http.get<Item[]>(this.apiUrl, {params: urlParams})
+    //return this.http.get<Item[]>(this.apiUrl)
   }
+
+  // getAllItems(): Observable<Item[]> {
+
+
+  //   return this.http.get<Item[]>(this.apiUrl)
+  //   //return this.http.get<Item[]>(this.apiUrl)
+  // }
 
   getById(id: number):Observable<Item>{
     const urlToGet = `${this.apiUrl}/${id}`

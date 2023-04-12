@@ -21,6 +21,7 @@ import { EditFormComponent } from './components/formulario/editar/edit-form/edit
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatExpansionModule,
     MatInputModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
     
     
   ],
