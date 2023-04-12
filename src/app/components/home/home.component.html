@@ -1,15 +1,22 @@
 <section class="home-header">
     <header>
-        <h2>Tibia's item collection manager</h2>
+        <h1>Item collection manager</h1>
+        <h2>Satanis Foo</h2>
     </header>
     <div class="home-header-button">
         <button mat-raised-button color="primary" routerLink="/createItem">Add new item</button>
     </div>
 </section>
 
-
 <section class="home-items">
     <div *ngFor="let card of listCards">
         <app-card [itemCard]="card"></app-card>
     </div>
 </section>
+<div class="flex">
+    <button class="home-items_btn" *ngIf="this.skip <= this.listCards.length" mat-stroked-button color="primary"
+        (click)="loadMore()">Show more
+        items</button>
+</div>
+
+
