@@ -4,6 +4,7 @@ import { Item } from '../itemInterface';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteItemComponent } from '../delete-item/delete-item.component';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-card',
@@ -22,18 +23,19 @@ export class CardComponent {
 
   owns: string = ""
 
-  constructor(public dialog: MatDialog, public activatedRoute: ActivatedRoute) { }
+  constructor(public dialog: MatDialog, public activatedRoute: ActivatedRoute, private service: ItemService) { }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DeleteItemComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(DeleteItemComponent, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //   });
+  // }
 
   ngOnInit() {
     this.UpdateOwnsText()
+
   }
 
   UpdateOwnsText() {
@@ -47,7 +49,10 @@ export class CardComponent {
 
   ChangeOwns() {
     this.itemCard.possui = !this.itemCard.possui
-    this.UpdateOwnsText()
+    console.log(this.itemCard)
+    this.service.UpdateItem(this.itemCard).subscribe( () =>{
+      this.UpdateOwnsText()
+    })
   }
 }
 
