@@ -1,6 +1,7 @@
 import { Item } from 'src/app/components/itemInterface';
 import { ItemService } from 'src/app/services/item.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -16,19 +17,33 @@ export class HomeComponent implements OnInit {
   pageSize = 25
   pageIndex = 0
 
+  categoryRoute: any;
 
 
-  constructor(private service: ItemService) { }
+  constructor(private service: ItemService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.getAllItems();
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.categoryRoute = params.get("id");
+    })
+    this.startApplication();
   }
 
-  // getAllItems() {
-  //   this.service.getAllItems(this.skip, this.take).subscribe((itemList) => {
-  //     this.listCards = itemList;
-  //   })
-  // }
+  startApplication() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    if (this.categoryRoute) {
+      this.getItemsByCategory()
+    }
+    this.getAllItems()
+  }
+
+  getItemsByCategory() {
+    this.service.getByCategory(this.categoryRoute).subscribe((itemList) => {
+      console.log(this.categoryRoute)
+      return this.listCards.push(...itemList);
+    })
+  }
+
 
   getAllItems() {
     this.service.getAllItems(this.skip, this.take).subscribe((itemList) => {
@@ -37,8 +52,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
   loadMore() {
-    if (this.skip <= this.listCards.length) {
+    if (this.categoryRoute) {
+      return
+    } else if (this.skip <= this.listCards.length) {
       this.pageIndex++
       console.log("pagina " + this.pageIndex)
       this.skip = this.pageSize * this.pageIndex
@@ -47,7 +65,8 @@ export class HomeComponent implements OnInit {
       this.getAllItems()
       console.log(this.take)
     }
-    return
   }
 
 }
+
+

@@ -33,6 +33,11 @@ export class ItemService {
     return this.http.get<Item>(urlToGet)
   } 
 
+  getByCategory(categoria: string): Observable<Item[]>{
+    const urlToGet = `${this.apiUrl}/category/${categoria}`
+    return this.http.get<Item[]>(urlToGet)
+  }
+
   addItem(itemCadastrar: Item): Observable<Item>{
     return this.http.post<Item>(this.apiUrl, itemCadastrar)
   }

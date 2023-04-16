@@ -30,6 +30,10 @@
     margin: 25px 0;
 }
 
+.home-itens-spin{
+    margin:0 auto;
+}
+
 .flex {
     display: flex;
     justify-content: center;

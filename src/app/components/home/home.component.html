@@ -12,11 +12,18 @@
     <div *ngFor="let card of listCards">
         <app-card [itemCard]="card"></app-card>
     </div>
+    <div class="home-itens-spin" *ngIf="this.listCards.length <=0">
+        <mat-spinner></mat-spinner>
+    </div>
 </section>
+
 <div class="flex">
-    <button class="home-items_btn" *ngIf="this.skip <= this.listCards.length" mat-stroked-button color="primary"
+    <button class="home-items_btn" *ngIf="this.skip <= this.listCards.length && this.listCards.length > 0 && !this.categoryRoute" mat-stroked-button color="primary"
         (click)="loadMore()">Show more
         items</button>
 </div>
+
+
+
 
 
