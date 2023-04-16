@@ -1,0 +1,29 @@
+<button mat-button [matMenuTriggerFor]="categories">Filter<mat-icon>
+    filter_list
+</mat-icon></button>
+<mat-menu #categories="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="bodyEquipment">Body Equipment</button>
+    <button mat-menu-item [matMenuTriggerFor]="weaponsEquipment">Weapons</button>
+    <button mat-menu-item [matMenuTriggerFor]="shieldsEquipment">Shields</button>
+    <button mat-menu-item [matMenuTriggerFor]="otherEquipment">Others</button>
+</mat-menu>
+
+<mat-menu #bodyEquipment="matMenu">
+    <a mat-menu-item class="nav-link" aria-current="page" *ngFor="let category of categoriesBody"
+        routerLink="/category/{{category}}">{{category}}</a>
+</mat-menu>
+
+<mat-menu #weaponsEquipment="matMenu">
+    <a mat-menu-item class="nav-link" aria-current="page" *ngFor="let category of categoriesWeapons"
+        routerLink="/category/{{category}}">{{category}}</a>
+</mat-menu>
+
+<mat-menu #shieldsEquipment="matMenu">
+    <a mat-menu-item class="nav-link" aria-current="page" *ngFor="let category of categoriesShields"
+        routerLink="/category/{{category}}">{{category}}</a>
+</mat-menu>
+
+<mat-menu #otherEquipment="matMenu">
+    <a mat-menu-item class="nav-link" aria-current="page" *ngFor="let category of categoriesOthers"
+        routerLink="/category/{{category}}">{{category}}</a>
+</mat-menu>

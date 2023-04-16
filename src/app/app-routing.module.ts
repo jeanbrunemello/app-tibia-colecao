@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { HomeComponent } from './components/home/home.component';
@@ -26,6 +26,10 @@ component:HomeComponent
   {
     path: "editItem/:id",
     component: EditFormComponent
+  },
+  {
+    path: "category/:id",
+    component: HomeComponent
   }
 ];
 

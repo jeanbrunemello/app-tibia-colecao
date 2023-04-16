@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
 
   categoryRoute: any;
 
-
   constructor(private service: ItemService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.activatedRoute.paramMap.subscribe(params => {
       this.categoryRoute = params.get("id");
     })
@@ -30,11 +30,11 @@ export class HomeComponent implements OnInit {
   }
 
   startApplication() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     if (this.categoryRoute) {
       this.getItemsByCategory()
+    } else{
+      this.getAllItems()
     }
-    this.getAllItems()
   }
 
   getItemsByCategory() {
@@ -53,20 +53,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-  loadMore() {
-    if (this.categoryRoute) {
-      return
-    } else if (this.skip <= this.listCards.length) {
-      this.pageIndex++
-      console.log("pagina " + this.pageIndex)
-      this.skip = this.pageSize * this.pageIndex
-      console.log("skip " + this.skip)
-      //this.take = this.pageSize + this.take
-      this.getAllItems()
-      console.log(this.take)
-    }
+loadMore() {
+  if (this.categoryRoute) {
+    return
+  } else if (this.skip <= this.listCards.length) {
+    this.pageIndex++
+    console.log("pagina " + this.pageIndex)
+    this.skip = this.pageSize * this.pageIndex
+    console.log("skip " + this.skip)
+    //this.take = this.pageSize + this.take
+    this.getAllItems()
+    console.log(this.take)
   }
 
 }
 
-
+}
