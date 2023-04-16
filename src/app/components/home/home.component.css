@@ -17,6 +17,10 @@
     text-align: end;
 }
 
+.home-filter{
+text-align: right;
+}
+
 
 .home-items {
     margin: 0 auto;

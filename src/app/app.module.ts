@@ -21,7 +21,11 @@ import { EditFormComponent } from './components/formulario/editar/edit-form/edit
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { FiltersComponent } from './components/filters/filters.component';
 
 
 @NgModule({
@@ -33,7 +37,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     HomeComponent,
     CardComponent,
     DeleteItemComponent,
-    EditFormComponent
+    EditFormComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +55,10 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     MatInputModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatListModule,
     
   ],
   providers: [],

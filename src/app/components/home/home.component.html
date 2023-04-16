@@ -7,7 +7,9 @@
         <button mat-raised-button color="primary" routerLink="/createItem">Add new item</button>
     </div>
 </section>
-
+<div class="home-filter">
+    <app-filters></app-filters>
+</div>
 <section class="home-items">
     <div *ngFor="let card of listCards">
         <app-card [itemCard]="card"></app-card>
@@ -18,12 +20,8 @@
 </section>
 
 <div class="flex">
-    <button class="home-items_btn" *ngIf="this.skip <= this.listCards.length && this.listCards.length > 0 && !this.categoryRoute" mat-stroked-button color="primary"
-        (click)="loadMore()">Show more
+    <button class="home-items_btn"
+        *ngIf="this.skip <= this.listCards.length && this.listCards.length > 0 && !this.categoryRoute"
+        mat-stroked-button color="primary" (click)="loadMore()">Show more
         items</button>
 </div>
-
-
-
-
-
