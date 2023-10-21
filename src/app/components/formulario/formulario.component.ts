@@ -5,6 +5,7 @@ import { Item } from '../itemInterface';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MaxLengthValidator } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-formulario',
@@ -25,7 +26,7 @@ export class FormularioComponent {
   // }
 
 
-  constructor(private service: ItemService, private router: Router, private formBuilder:FormBuilder) { 
+  constructor(private service: ItemService, private router: Router, private formBuilder:FormBuilder, private _snackBar: MatSnackBar) { 
     
   }
   
@@ -44,21 +45,28 @@ export class FormularioComponent {
   // }
 
   AddItemToDatabase() {
-    this.service.addItem(this.form.value).subscribe(() => {
-      console.log("enviado")
-      console.log(`O item ${this.form.get("nome")} foi cadastrado com sucesso`)
-      this.form.reset()
-    })
+    try {
+      this.service.addItem(this.form.value).subscribe((resposta) => {
+        console.log("enviado");
+        this.openSnackBar(`Item ${resposta.nome} criado com sucesso`);
+        this.form.reset();
+      });
+    } catch (error) {
+      console.error("Ocorreu um erro ao adicionar o item ao banco de dados:", error);
+      this.openSnackBar("Ocorreu um erro ao adicionar o item ao banco de dados");
+    }
   }
 
   CancelAndClose() {
     this.router.navigate(["/home"])
   }
 
-  // SetItemClass(event: any) {
-  //   // console.log(event.value)
-  //   // this.form.patchValue({categoria: event.value})
-  //   // console.log(this.form.value)
-  // }
+  openSnackBar(msg:string) {
+    this._snackBar.open(`${msg}`, 'Close', {
+      horizontalPosition: "end",
+      verticalPosition: "top",
+      duration: 2500, //miliseconds
+    });
+  }
 
 }

@@ -14,8 +14,9 @@
     <div *ngFor="let card of listCards">
         <app-card [itemCard]="card"></app-card>
     </div>
-    <div class="home-itens-spin" *ngIf="this.listCards.length <=0">
-        <mat-spinner></mat-spinner>
+    <div class="home-itens-spin flex" *ngIf="this.listCards.length <=0"  >
+        <mat-spinner *ngIf="this.listCards.length <=0 && buscandoDados != 'Nenhum item encontrado'" ></mat-spinner>
+        <p>{{buscandoDados}}</p>
     </div>
 </section>
 

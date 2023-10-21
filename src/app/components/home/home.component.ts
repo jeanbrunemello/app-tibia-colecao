@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   take = 25
   pageSize = 25
   pageIndex = 0
-
+  buscandoDados = "Buscando base de dados"
   categoryRoute: any;
 
   constructor(private service: ItemService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -32,18 +32,28 @@ export class HomeComponent implements OnInit {
   startApplication() {
     if (this.categoryRoute) {
       this.getItemsByCategory()
-    } else{
+    } else {
       this.getAllItems()
     }
   }
 
-  getItemsByCategory() {
-    this.service.getByCategory(this.categoryRoute).subscribe((itemList) => {
-      console.log(this.categoryRoute)
-      return this.listCards.push(...itemList);
-    })
-  }
 
+  getItemsByCategory() {
+    try {
+      this.service.getByCategory(this.categoryRoute).subscribe((itemList) => {
+        console.log(itemList)
+        if (itemList && itemList.length > 0) {
+          this.listCards.push(...itemList);
+        } else {
+          console.log('A resposta está válida, mas vazia.');
+          this.buscandoDados = "Nenhum item encontrado";
+        }
+        return this.listCards;
+      })
+    } catch {
+      console.log()
+    }
+  }
 
   getAllItems() {
     this.service.getAllItems(this.skip, this.take).subscribe((itemList) => {
@@ -53,19 +63,19 @@ export class HomeComponent implements OnInit {
   }
 
 
-loadMore() {
-  if (this.categoryRoute) {
-    return
-  } else if (this.skip <= this.listCards.length) {
-    this.pageIndex++
-    console.log("pagina " + this.pageIndex)
-    this.skip = this.pageSize * this.pageIndex
-    console.log("skip " + this.skip)
-    //this.take = this.pageSize + this.take
-    this.getAllItems()
-    console.log(this.take)
-  }
+  loadMore() {
+    if (this.categoryRoute) {
+      return
+    } else if (this.skip <= this.listCards.length) {
+      this.pageIndex++
+      console.log("pagina " + this.pageIndex)
+      this.skip = this.pageSize * this.pageIndex
+      console.log("skip " + this.skip)
+      //this.take = this.pageSize + this.take
+      this.getAllItems()
+      console.log(this.take)
+    }
 
-}
+  }
 
 }

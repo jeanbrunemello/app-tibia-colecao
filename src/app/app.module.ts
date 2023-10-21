@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { FiltersComponent } from './components/filters/filters.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { FiltersComponent } from './components/filters/filters.component';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatListModule,
+    MatSnackBarModule
     
   ],
   providers: [],
